@@ -1,27 +1,18 @@
 {
   "name": "shared-utils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "prepare": "npm run build"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "devDependencies": {
     "@types/node": "^25.9.2",
     "typescript": "^6.0.3"
   },
   "peerDependencies": {
-    "@nestjs/common": "^11.0.1",
-    "@nestjs/config": "^4.0.4",
-    "rxjs": "^7.8.1"
-  },
-  "dependencies": {
-    "rxjs": "^7.8.1"
+    "@nestjs/common": "^10.0.0 || ^11.0.0",
+    "rxjs": "^7.0.0"
   }
 }
