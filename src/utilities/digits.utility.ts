@@ -1,4 +1,4 @@
-export class utilsService {
+export class DigitUtilities {
 
 
     toEnglishNumbers(mobile: string): string {
