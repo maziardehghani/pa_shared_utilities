@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.utilsService = void 0;
-class utilsService {
+exports.DigitUtilities = void 0;
+class DigitUtilities {
     toEnglishNumbers(mobile) {
         if (!mobile) {
             return mobile;
@@ -21,4 +21,4 @@ class utilsService {
         return arg.charAt(0).toUpperCase() + arg.slice(1);
     }
 }
-exports.utilsService = utilsService;
+exports.DigitUtilities = DigitUtilities;
