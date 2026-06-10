@@ -19,7 +19,6 @@
     "@nestjs/cache-manager": "^2.0.0",
     "@nestjs/common": "^10.4.22",
     "@nestjs/config": "^3.0.0",
-    "cache-manager": "^5.0.0",
     "rxjs": "^7.0.0"
   },
   "dependencies": {
