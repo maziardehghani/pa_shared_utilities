@@ -13,5 +13,11 @@
   "description": "",
   "devDependencies": {
     "typescript": "^6.0.3"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^10.0.0",
+    "@nestjs/config": "^3.0.0",
+    "@nestjs/cache-manager": "^2.0.0",
+    "cache-manager": "^5.0.0"
   }
 }
