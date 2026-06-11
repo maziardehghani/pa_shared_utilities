@@ -18,3 +18,4 @@ __exportStar(require("./enums/user-status.enum"), exports);
 __exportStar(require("./utilities/digits.utility"), exports);
 __exportStar(require("./interceptors/collection.interceptor"), exports);
 __exportStar(require("./pipes/global-validation.grpc.pipe"), exports);
+__exportStar(require("./filters/grpc-exceptions.filter"), exports);
