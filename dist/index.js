@@ -19,3 +19,4 @@ __exportStar(require("./utilities/digits.utility"), exports);
 __exportStar(require("./interceptors/collection.interceptor"), exports);
 __exportStar(require("./pipes/global-validation.grpc.pipe"), exports);
 __exportStar(require("./filters/grpc-exceptions.filter"), exports);
+__exportStar(require("./utilities/calendar.utility"), exports);
