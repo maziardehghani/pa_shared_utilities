@@ -4,14 +4,14 @@ exports.CollectionInterceptor = void 0;
 const rxjs_1 = require("rxjs");
 class CollectionInterceptor {
     intercept(context, next) {
-        const request = context.switchToHttp().getRequest();
+        const rpcData = context.switchToRpc().getData();
         return next.handle().pipe((0, rxjs_1.map)((data) => {
             // if data was pagination this brucket is going to execute
             if (Array.isArray(data) && typeof data[1] === 'number') {
                 const entities = data[0];
                 const total = data[1];
-                const page = Number(request.query.page) || 1;
-                const limit = Number(request.query.limit) || 10;
+                const page = Number(rpcData?.page) || 1;
+                const limit = Number(rpcData?.limit) || 10;
                 const offset = (page - 1) * limit;
                 return {
                     entities: entities.map(this.transformEntity),
