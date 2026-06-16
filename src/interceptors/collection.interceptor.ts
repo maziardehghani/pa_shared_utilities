@@ -11,7 +11,7 @@ export class CollectionInterceptor implements NestInterceptor {
     intercept(context: ExecutionContext, next: CallHandler) {
 
 
-        const request = context.switchToHttp().getRequest();
+        const rpcData = context.switchToRpc().getData();
 
         return next.handle().pipe(
 
@@ -22,8 +22,8 @@ export class CollectionInterceptor implements NestInterceptor {
 
                     const entities = data[0];
                     const total = data[1];
-                    const page = Number(request.query.page) || 1;
-                    const limit = Number(request.query.limit) || 10;
+                    const page = Number(rpcData?.page) || 1;
+                    const limit = Number(rpcData?.limit) || 10;
                     const offset = (page - 1) * limit;
 
 
