@@ -31,9 +31,9 @@ export class CollectionInterceptor implements NestInterceptor {
                         entities: entities.map(this.transformEntity),
                         meta: {
                             total: total,
-                            current_page: page,
-                            per_page: limit,
-                            last_page: Math.ceil(total / limit),
+                            currentPage: page,
+                            perPage: limit,
+                            lastPage: Math.ceil(total / limit),
                             from: total === 0 ? 0 : offset + 1,
                             to: Math.min(offset + entities.length, total)
                         }
