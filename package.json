@@ -16,6 +16,9 @@
   },
   "dependencies": {
     "@nestjs/microservices": "^11.1.26",
-    "class-validator": "^0.15.1"
+    "@nestjs/typeorm": "^11.0.1",
+    "class-validator": "^0.15.1",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^1.0.0"
   }
 }

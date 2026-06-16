@@ -1,11 +1,24 @@
 import { Catch, ArgumentsHost } from '@nestjs/common';
 import { BaseRpcExceptionFilter, RpcException } from '@nestjs/microservices';
 import { Observable, throwError } from 'rxjs';
+import { EntityNotFoundError } from 'typeorm';
 
-@Catch(RpcException)
+
+
+
+@Catch(RpcException, EntityNotFoundError)
 export class GrpcExceptionFilter extends BaseRpcExceptionFilter {
   catch(exception: RpcException, host: ArgumentsHost): Observable<never> {
     const error = exception.getError();
+
+
+    if (exception instanceof EntityNotFoundError) {
+      return throwError(() => ({
+        code: 5,
+        details: 'Resource not found',
+      }));
+    }
+
 
     if (typeof error === 'string') {
       return throwError(() => ({

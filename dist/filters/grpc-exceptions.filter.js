@@ -42,8 +42,9 @@ exports.GrpcExceptionFilter = void 0;
 const common_1 = require("@nestjs/common");
 const microservices_1 = require("@nestjs/microservices");
 const rxjs_1 = require("rxjs");
+const typeorm_1 = require("typeorm");
 let GrpcExceptionFilter = (() => {
-    let _classDecorators = [(0, common_1.Catch)(microservices_1.RpcException)];
+    let _classDecorators = [(0, common_1.Catch)(microservices_1.RpcException, typeorm_1.EntityNotFoundError)];
     let _classDescriptor;
     let _classExtraInitializers = [];
     let _classThis;
@@ -51,6 +52,12 @@ let GrpcExceptionFilter = (() => {
     var GrpcExceptionFilter = _classThis = class extends _classSuper {
         catch(exception, host) {
             const error = exception.getError();
+            if (exception instanceof typeorm_1.EntityNotFoundError) {
+                return (0, rxjs_1.throwError)(() => ({
+                    code: 5,
+                    details: 'Resource not found',
+                }));
+            }
             if (typeof error === 'string') {
                 return (0, rxjs_1.throwError)(() => ({
                     code: 3, // INVALID_ARGUMENT
