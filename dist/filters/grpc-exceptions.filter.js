@@ -51,16 +51,16 @@ let GrpcExceptionFilter = (() => {
     let _classSuper = microservices_1.BaseRpcExceptionFilter;
     var GrpcExceptionFilter = _classThis = class extends _classSuper {
         catch(exception, host) {
-            const error = exception.getError();
             if (exception instanceof typeorm_1.EntityNotFoundError) {
                 return (0, rxjs_1.throwError)(() => ({
                     code: 5,
                     details: 'Resource not found',
                 }));
             }
+            const error = exception.getError();
             if (typeof error === 'string') {
                 return (0, rxjs_1.throwError)(() => ({
-                    code: 3, // INVALID_ARGUMENT
+                    code: 3,
                     details: error,
                 }));
             }

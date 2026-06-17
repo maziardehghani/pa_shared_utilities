@@ -8,8 +8,8 @@ import { EntityNotFoundError } from 'typeorm';
 
 @Catch(RpcException, EntityNotFoundError)
 export class GrpcExceptionFilter extends BaseRpcExceptionFilter {
-  catch(exception: RpcException, host: ArgumentsHost): Observable<never> {
-    const error = exception.getError();
+  
+  catch(exception: RpcException | EntityNotFoundError, host: ArgumentsHost): Observable<never> {
 
 
     if (exception instanceof EntityNotFoundError) {
@@ -19,10 +19,12 @@ export class GrpcExceptionFilter extends BaseRpcExceptionFilter {
       }));
     }
 
+    const error = exception.getError();
+
 
     if (typeof error === 'string') {
       return throwError(() => ({
-        code: 3, // INVALID_ARGUMENT
+        code: 3,
         details: error,
       }));
     }
